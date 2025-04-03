@@ -1,0 +1,47 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://jmg777e2qs1y"]
+
+[ext_resource type="Shader" uid="uid://dciodom16bgdy" path="res://Shaders/ERZSky.gdshader" id="1_6oq3j"]
+[ext_resource type="Texture2D" uid="uid://c8lo335258s4y" path="res://Map/ERZ.png" id="2_dgucx"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6oq3j")
+shader_parameter/base_texture = ExtResource("2_dgucx")
+shader_parameter/use_texture = true
+shader_parameter/texture_visibility = 0.0
+shader_parameter/texture_transparency = 0.188
+shader_parameter/texture_scale = Vector2(1, 1)
+shader_parameter/texture_offset = Vector2(0, 0)
+shader_parameter/texture_on_top = false
+shader_parameter/nebula_color1 = Color(1, 1, 1, 1)
+shader_parameter/nebula_color2 = Color(1, 1, 1, 1)
+shader_parameter/nebula_color3 = Color(1, 1, 1, 1)
+shader_parameter/star_color = Color(1, 1, 1, 1)
+shader_parameter/star_density = 0.11
+shader_parameter/nebula_density = 0.055
+shader_parameter/star_size = 1.377
+shader_parameter/nebula_scale = 10.0
+shader_parameter/speed = 0.498
+shader_parameter/time_scale = 5.0
+shader_parameter/scroll_direction = Vector2(0.1, 0.2)
+shader_parameter/animate_stars = true
+shader_parameter/animate_nebula = true
+shader_parameter/animate_texture = true
+shader_parameter/texture_scroll_direction = Vector2(0.05, 0.03)
+shader_parameter/emission_strength = 1.0
+shader_parameter/texture_emission = 0.5
+shader_parameter/roughness_value = 0.7
+shader_parameter/metallic_value = 0.3
+shader_parameter/specular_value = 0.5
+shader_parameter/use_rim_effect = false
+shader_parameter/rim_power = 3.0
+shader_parameter/rim_color = Color(0, 0.5, 1, 1)
+shader_parameter/use_fresnel = false
+shader_parameter/fresnel_power = 2.0
+shader_parameter/octaves = 5
+shader_parameter/persistence = 0.5
+shader_parameter/lacunarity = 2.0
+shader_parameter/texture_blend_mode = 5
+shader_parameter/use_texture_mask = false
+shader_parameter/texture_mask_threshold = 0.5
+shader_parameter/invert_mask = false

@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://ciabok3jctyyw"]
+
+[ext_resource type="Script" uid="uid://dmt5wdriclff" path="res://Objects/TimeStone.gd" id="1_6grel"]
+[ext_resource type="Texture2D" uid="uid://bm3hkh0speywc" path="res://Objects/TimeStone.png" id="2_pfg8e"]
+
+[sub_resource type="Animation" id="Animation_h86nx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1ms6g"]
+resource_name = "Spin"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jkkr"]
+_data = {
+&"RESET": SubResource("Animation_h86nx"),
+&"Spin": SubResource("Animation_1ms6g")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_amtbh"]
+
+[node name="TimeStone" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.5)
+script = ExtResource("1_6grel")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_pfg8e")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_7jkkr")
+}
+autoplay = "Spin"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0920715, -0.0927315, -0.0888557)
+shape = SubResource("SphereShape3D_amtbh")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://7o4e5x5inkb3"]
+
+[ext_resource type="Script" uid="uid://pgdlpwvvh5uj" path="res://UFO/UFO.gd" id="1_dw4pw"]
+[ext_resource type="Texture2D" uid="uid://d38spfgklqcr8" path="res://UFO/UFO-1.png" id="2_h335k"]
+[ext_resource type="AudioStream" uid="uid://dgx4lljei1kax" path="res://SoundFX/Destroy.wav" id="3_h335k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dw4pw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hbc2u"]
+radius = 1.0
+
+[node name="UFO" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_dw4pw")
+texture = ExtResource("2_h335k")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_h335k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("SphereShape3D_dw4pw")
+disabled = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+physics_interpolation_mode = 2
+shape = SubResource("SphereShape3D_hbc2u")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
+light_energy = 8.0
+light_negative = true
+spot_range = 10.0
+spot_attenuation = -10.0
+spot_angle = 10.0
+
+[node name="SoundFX" type="Node" parent="."]
+
+[node name="Destroy" type="AudioStreamPlayer" parent="SoundFX"]
+stream = ExtResource("3_h335k")
+volume_db = -3.0

@@ -1,0 +1,532 @@
+[gd_scene load_steps=78 format=3 uid="uid://ck6sbwsx0trsd"]
+
+[ext_resource type="Texture2D" uid="uid://cy3ih10po12ul" path="res://Map/Encore/GrassEdge.png" id="1_jjvgo"]
+[ext_resource type="Texture2D" uid="uid://djqfd73qc3iiw" path="res://Map/Encore/Grass.png" id="1_oogss"]
+[ext_resource type="Texture2D" uid="uid://cortgjltot5u2" path="res://Map/Encore/GrassEdgeCorner.png" id="3_ikvrk"]
+[ext_resource type="Texture2D" uid="uid://dci76jdwqys7e" path="res://Map/Encore/GrassEdgeInnerCorner.png" id="4_myji4"]
+[ext_resource type="Texture2D" uid="uid://uxcuvto4sma5" path="res://Map/Encore/GrassCurveCorner1.png" id="5_pm2kl"]
+[ext_resource type="Texture2D" uid="uid://dpaqo614ewrcb" path="res://Map/Encore/GrassCurveCorner3.png" id="6_wxaf7"]
+[ext_resource type="Texture2D" uid="uid://dy8tvd0u76ok6" path="res://Map/Encore/GrassCurveCorner2.png" id="7_l4qgk"]
+[ext_resource type="Texture2D" uid="uid://c2nhnr3fvwjcd" path="res://Map/Encore/GrassCurveCorner4.png" id="8_6x25c"]
+[ext_resource type="Texture2D" uid="uid://d0uedvqo1pixo" path="res://Map/Encore/GrassCurveCorner5.png" id="9_5n2jj"]
+[ext_resource type="Texture2D" uid="uid://da41st3p088my" path="res://Map/Encore/GrassCurveCorner6.png" id="10_ybguk"]
+[ext_resource type="Shader" uid="uid://bqo72tbijqmeb" path="res://Shaders/Water.gdshader" id="11_6x25c"]
+[ext_resource type="Texture2D" uid="uid://cmqu28wuf8f4e" path="res://Map/Encore/BumperCorner.png" id="11_oogss"]
+[ext_resource type="Texture2D" uid="uid://c0xi6y1dph5oc" path="res://Map/Encore/WaterEdge.png" id="12_jjvgo"]
+[ext_resource type="Texture2D" uid="uid://dmwwhruwn28m0" path="res://Map/Encore/BumperWall.png" id="12_oogss"]
+[ext_resource type="Texture2D" uid="uid://1jo2o8j4iirx" path="res://Map/Encore/WaterEdgeCorner.png" id="13_l3gay"]
+[ext_resource type="Texture2D" uid="uid://bkmdcbtjwlgpk" path="res://Map/Encore/BouncePad.png" id="13_oogss"]
+[ext_resource type="Texture2D" uid="uid://08vbbrqlcm6k" path="res://Map/Encore/WaterEdgeInnerCorner.png" id="14_ginxr"]
+[ext_resource type="Texture2D" uid="uid://d2pqmq1ucpry" path="res://Map/Encore/BoostPad.png" id="14_ikvrk"]
+[ext_resource type="Texture2D" uid="uid://d3jst05s83usw" path="res://Map/Textures/RoadBump.png" id="15_048rj"]
+[ext_resource type="Texture2D" uid="uid://lirnsh85knwl" path="res://Map/Textures/RoadBump2.png" id="16_b8itf"]
+[ext_resource type="Texture2D" uid="uid://crh338d6pm1dv" path="res://Map/Textures/Panel.png" id="17_xbamv"]
+[ext_resource type="Texture2D" uid="uid://jg5pv6dwe055" path="res://Map/Textures/Brick.png" id="18_iacp8"]
+[ext_resource type="Texture2D" uid="uid://bv5xmvcirmjsa" path="res://Map/Textures/Grate.png" id="19_vrj7m"]
+[ext_resource type="Texture2D" uid="uid://bjqq48lweglqs" path="res://Map/Textures/UFOMarker2.png" id="20_tyr3c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14cwp"]
+albedo_texture = ExtResource("1_oogss")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3n5sb"]
+material = SubResource("StandardMaterial3D_14cwp")
+size = Vector2(3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3acut"]
+size = Vector3(3, 0.1, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7o16"]
+albedo_texture = ExtResource("1_jjvgo")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xgrvh"]
+material = SubResource("StandardMaterial3D_h7o16")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8htd"]
+albedo_texture = ExtResource("3_ikvrk")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d4sqx"]
+material = SubResource("StandardMaterial3D_s8htd")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tficn"]
+albedo_texture = ExtResource("4_myji4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wqwde"]
+material = SubResource("StandardMaterial3D_tficn")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4te6"]
+albedo_texture = ExtResource("5_pm2kl")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qibgd"]
+material = SubResource("StandardMaterial3D_a4te6")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqwde"]
+albedo_texture = ExtResource("6_wxaf7")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qvis4"]
+material = SubResource("StandardMaterial3D_wqwde")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm8i1"]
+albedo_texture = ExtResource("7_l4qgk")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pi3k0"]
+material = SubResource("StandardMaterial3D_mm8i1")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi3k0"]
+albedo_texture = ExtResource("8_6x25c")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aum1v"]
+material = SubResource("StandardMaterial3D_pi3k0")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q42rl"]
+albedo_texture = ExtResource("9_5n2jj")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s36bi"]
+material = SubResource("StandardMaterial3D_q42rl")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxqqp"]
+albedo_texture = ExtResource("10_ybguk")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oh26m"]
+material = SubResource("StandardMaterial3D_mxqqp")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iynb"]
+albedo_texture = ExtResource("11_oogss")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jk38r"]
+material = SubResource("StandardMaterial3D_4iynb")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlb4i"]
+albedo_texture = ExtResource("12_oogss")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ottlo"]
+material = SubResource("StandardMaterial3D_xlb4i")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3eko"]
+albedo_texture = ExtResource("13_oogss")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q2g8g"]
+material = SubResource("StandardMaterial3D_k3eko")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulshj"]
+albedo_texture = ExtResource("14_ikvrk")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jjf6g"]
+material = SubResource("StandardMaterial3D_ulshj")
+size = Vector2(3, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4to7"]
+render_priority = 0
+shader = ExtResource("11_6x25c")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("12_jjvgo")
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 0.0
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/speed = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oogss"]
+material = SubResource("ShaderMaterial_s4to7")
+size = Vector2(3, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikvrk"]
+render_priority = 0
+shader = ExtResource("11_6x25c")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("13_l3gay")
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 0.0
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/speed = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_myji4"]
+material = SubResource("ShaderMaterial_ikvrk")
+size = Vector2(3, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm2kl"]
+render_priority = 0
+shader = ExtResource("11_6x25c")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("14_ginxr")
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 0.0
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/speed = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wxaf7"]
+material = SubResource("ShaderMaterial_pm2kl")
+size = Vector2(3, 3)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2m6m1"]
+load_path = "res://.godot/imported/Road.png-f6b15a00572308384105fb153d45a6b0.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngt8f"]
+albedo_texture = SubResource("CompressedTexture2D_2m6m1")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1wfrk"]
+material = SubResource("StandardMaterial3D_ngt8f")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlptu"]
+albedo_texture = ExtResource("15_048rj")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_evitd"]
+material = SubResource("StandardMaterial3D_rlptu")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmlmx"]
+albedo_texture = ExtResource("16_b8itf")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2m6m1"]
+material = SubResource("StandardMaterial3D_cmlmx")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wfrk"]
+albedo_texture = ExtResource("17_xbamv")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rlptu"]
+material = SubResource("StandardMaterial3D_1wfrk")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evitd"]
+albedo_texture = ExtResource("18_iacp8")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8kk41"]
+material = SubResource("StandardMaterial3D_evitd")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aum1v"]
+albedo_texture = ExtResource("19_vrj7m")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q42rl"]
+material = SubResource("StandardMaterial3D_aum1v")
+size = Vector2(3, 3)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_70nid"]
+load_path = "res://.godot/imported/UFOMarker.png-0215c0aee139f7e454ebeb62ca065d0b.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s36bi"]
+albedo_texture = SubResource("CompressedTexture2D_70nid")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mxqqp"]
+material = SubResource("StandardMaterial3D_s36bi")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qibgd"]
+albedo_texture = ExtResource("20_tyr3c")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ngt8f"]
+material = SubResource("StandardMaterial3D_qibgd")
+size = Vector2(3, 3)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_3n5sb")
+skeleton = NodePath("Grass/CollisionShape3D")
+
+[node name="Grass" type="StaticBody3D" parent="Grass"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass/Grass"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("PlaneMesh_xgrvh")
+skeleton = NodePath("GrassEdge/CollisionShape3D")
+
+[node name="GrassEdge" type="StaticBody3D" parent="GrassEdge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassEdge/GrassEdge"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassEdgeCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("PlaneMesh_d4sqx")
+skeleton = NodePath("GrassEdgeCorner/CollisionShape3D")
+
+[node name="GrassEdgeCorner" type="StaticBody3D" parent="GrassEdgeCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassEdgeCorner/GrassEdgeCorner"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassEdgeInnerCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+mesh = SubResource("PlaneMesh_wqwde")
+skeleton = NodePath("GrassEdgeInnerCorner/CollisionShape3D")
+
+[node name="GrassEdgeInnerCorner" type="StaticBody3D" parent="GrassEdgeInnerCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassEdgeInnerCorner/GrassEdgeInnerCorner"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassCurveCorner1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+mesh = SubResource("PlaneMesh_qibgd")
+skeleton = NodePath("GrassCurveCorner1/CollisionShape3D")
+
+[node name="GrassCurveCorner1" type="StaticBody3D" parent="GrassCurveCorner1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCurveCorner1/GrassCurveCorner1"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassCurveCorner3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+mesh = SubResource("PlaneMesh_qvis4")
+skeleton = NodePath("GrassCurveCorner1/CollisionShape3D")
+
+[node name="GrassCurveCorner1" type="StaticBody3D" parent="GrassCurveCorner3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCurveCorner3/GrassCurveCorner1"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassCurveCorner2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+mesh = SubResource("PlaneMesh_pi3k0")
+skeleton = NodePath("GrassCurveCorner2/CollisionShape3D")
+
+[node name="GrassCurveCorner2" type="StaticBody3D" parent="GrassCurveCorner2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCurveCorner2/GrassCurveCorner2"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassCurveCorner4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+mesh = SubResource("PlaneMesh_aum1v")
+skeleton = NodePath("GrassCurveCorner1/CollisionShape3D")
+
+[node name="GrassCurveCorner1" type="StaticBody3D" parent="GrassCurveCorner4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCurveCorner4/GrassCurveCorner1"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassCurveCorner5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+mesh = SubResource("PlaneMesh_s36bi")
+skeleton = NodePath("GrassCurveCorner1/CollisionShape3D")
+
+[node name="GrassCurveCorner1" type="StaticBody3D" parent="GrassCurveCorner5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCurveCorner5/GrassCurveCorner1"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="GrassCurveCorner6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
+mesh = SubResource("PlaneMesh_oh26m")
+skeleton = NodePath("GrassCurveCorner2/CollisionShape3D")
+
+[node name="GrassCurveCorner2" type="StaticBody3D" parent="GrassCurveCorner6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCurveCorner6/GrassCurveCorner2"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="BumperCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999992, 0.000920151, 0.00379602, -0.00090128, 0.999987, -0.00496776, -0.00380055, 0.00496429, 0.99998, 0, 0, 3.002)
+mesh = SubResource("PlaneMesh_jk38r")
+skeleton = NodePath("BumperCorner/CollisionShape3D")
+
+[node name="BumperCorner" type="StaticBody3D" parent="BumperCorner"]
+transform = Transform3D(0.999992, -0.000901288, -0.00380054, 0.000920143, 0.999987, 0.0049643, 0.00379602, -0.00496775, 0.99998, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BumperCorner/BumperCorner"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="BumperWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999993, -0.000431805, -0.00362053, 0.000432191, 1, 0.000105397, 0.00362048, -0.000106966, 0.999993, 0, 0, 6)
+mesh = SubResource("PlaneMesh_ottlo")
+skeleton = NodePath("BumperWall/CollisionShape3D")
+
+[node name="BumperWall" type="StaticBody3D" parent="BumperWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BumperWall/BumperWall"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="Spring" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999993, -0.000431805, -0.00362053, 0.000432191, 1, 0.000105397, 0.00362048, -0.000106966, 0.999993, 0, 0, 9)
+mesh = SubResource("PlaneMesh_q2g8g")
+skeleton = NodePath("Spring/CollisionShape3D")
+
+[node name="Spring" type="StaticBody3D" parent="Spring"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spring/Spring"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="SpeedPad" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999993, -0.000431805, -0.00362053, 0.000432191, 1, 0.000105397, 0.00362048, -0.000106966, 0.999993, 0, 0, 12)
+mesh = SubResource("PlaneMesh_jjf6g")
+skeleton = NodePath("SpeedPad/CollisionShape3D")
+
+[node name="SpeedPad" type="StaticBody3D" parent="SpeedPad"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpeedPad/SpeedPad"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="WaterEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource("PlaneMesh_oogss")
+skeleton = NodePath("WaterEdge/CollisionShape3D")
+
+[node name="WaterEdge" type="StaticBody3D" parent="WaterEdge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterEdge/WaterEdge"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="WaterEdgeCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+mesh = SubResource("PlaneMesh_myji4")
+skeleton = NodePath("WaterEdgeCorner/CollisionShape3D")
+
+[node name="WaterEdgeCorner" type="StaticBody3D" parent="WaterEdgeCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterEdgeCorner/WaterEdgeCorner"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="WaterEdgeInnerCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
+mesh = SubResource("PlaneMesh_wxaf7")
+skeleton = NodePath("WaterEdgeInnerCorner/CollisionShape3D")
+
+[node name="WaterEdgeInnerCorner" type="StaticBody3D" parent="WaterEdgeInnerCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterEdgeInnerCorner/WaterEdgeInnerCorner"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="Road" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+mesh = SubResource("PlaneMesh_1wfrk")
+skeleton = NodePath("Road/CollisionShape3D")
+
+[node name="Road" type="StaticBody3D" parent="Road"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/Road"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="RoadBump" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+mesh = SubResource("PlaneMesh_evitd")
+skeleton = NodePath("RoadBump/CollisionShape3D")
+
+[node name="RoadBump" type="StaticBody3D" parent="RoadBump"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoadBump/RoadBump"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="RoadBump2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+mesh = SubResource("PlaneMesh_2m6m1")
+skeleton = NodePath("RoadBump2/CollisionShape3D")
+
+[node name="RoadBump2" type="StaticBody3D" parent="RoadBump2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoadBump2/RoadBump2"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+mesh = SubResource("PlaneMesh_rlptu")
+skeleton = NodePath("Panel/CollisionShape3D")
+
+[node name="Panel" type="StaticBody3D" parent="Panel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel/Panel"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="Brick" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -12)
+mesh = SubResource("PlaneMesh_8kk41")
+skeleton = NodePath("Brick/CollisionShape3D")
+
+[node name="Brick" type="StaticBody3D" parent="Brick"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Brick/Brick"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="Grate" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -15)
+mesh = SubResource("PlaneMesh_q42rl")
+skeleton = NodePath("Brick/CollisionShape3D")
+
+[node name="Brick" type="StaticBody3D" parent="Grate"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grate/Brick"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="UFOMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -18)
+mesh = SubResource("PlaneMesh_mxqqp")
+skeleton = NodePath("Brick/CollisionShape3D")
+
+[node name="Brick" type="StaticBody3D" parent="UFOMarker"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UFOMarker/Brick"]
+shape = SubResource("BoxShape3D_3acut")
+
+[node name="UFOMarker2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -21)
+mesh = SubResource("PlaneMesh_ngt8f")
+skeleton = NodePath("Brick/CollisionShape3D")
+
+[node name="Brick" type="StaticBody3D" parent="UFOMarker2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UFOMarker2/Brick"]
+shape = SubResource("BoxShape3D_3acut")

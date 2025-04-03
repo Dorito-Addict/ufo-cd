@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cbrgkcei5hfto"]
+
+[ext_resource type="Shader" uid="uid://dt7mvoe5stf3e" path="res://Shaders/Sky.gdshader" id="1_sce3f"]
+[ext_resource type="Texture2D" uid="uid://cu5mbwss5jyjj" path="res://Map/EncoreWaterBG.png" id="2_sce3f"]
+[ext_resource type="Texture2D" uid="uid://cs5gr8piakmk6" path="res://Map/StandardPalette.png" id="3_447u4"]
+[ext_resource type="Texture2D" uid="uid://dnwdfntrl6rnh" path="res://Map/EncorePalette.png" id="4_sce3f"]
+[ext_resource type="Texture2D" uid="uid://cxgmxgb2rmqkt" path="res://Map/SpecialSky.png" id="5_jhhdm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sce3f")
+shader_parameter/horizon_height = 0.0
+shader_parameter/sky_size = Vector2(4, 2)
+shader_parameter/sky_texture = ExtResource("5_jhhdm")
+shader_parameter/horizon_texture = ExtResource("2_sce3f")
+shader_parameter/lock_aspect = false
+shader_parameter/aspect_ratio = 1.33333
+shader_parameter/fov = Vector2(180, 180)
+shader_parameter/tiling = Vector2i(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/tilt_force = 960.0
+shader_parameter/tilt_speed = 0.3
+shader_parameter/source_color_count = 16
+shader_parameter/color_speed = 0.3
+shader_parameter/sky_palette_in = ExtResource("3_447u4")
+shader_parameter/sky_palette_out = ExtResource("4_sce3f")
+shader_parameter/triplanar_blend_sharpness = 10.61
+shader_parameter/triplanar_texture_scale = Vector3(1, 1, 1)
