@@ -90,7 +90,7 @@ func apply_acceleration(acceleration: float, top_speed: float, delta):
 func air_move(delta):
 	if Input.is_action_just_pressed("jump") and hasDash == true and has_node("Head/Camera3D/Point"):
 		$"../SoundFX/HyperRing".play()
-		#$"../SoundFX/Charge".play()
+		# $"../SoundFX/Charge".play()
 		$"../SoundFX/BoostPad".play()
 		$"../ColorRect".flash()
 		velocity = (camera.global_transform.origin - $Head/Camera3D/Point.global_transform.origin).normalized() * extraVelMulti * -1
@@ -100,7 +100,7 @@ func air_move(delta):
 	
 	clip_velocity(get_wall_normal(), 14, delta)
 	clip_velocity(get_floor_normal(), 14, delta)
-	
+
 	velocity.y -= gravity * delta
 
 func ground_move(delta):

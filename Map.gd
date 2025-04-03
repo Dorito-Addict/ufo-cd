@@ -72,6 +72,7 @@ func on_spring_entered(body: Node3D) -> void:
 			body.velocity.y = 15.0 * 2
 		else:
 			body.velocity.y = 15.0
+			body.hasDash = true
 		$"../SoundFX/Spring".play()
 
 func on_boost_pad_entered(area: BoostPadArea, body: Node3D) -> void:

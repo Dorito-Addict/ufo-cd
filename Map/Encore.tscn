@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://cbrgkcei5hfto" path="res://Map/EncoreShader.tres" id="1_ddvr6"]
 [ext_resource type="Script" uid="uid://bphistmkb7dr7" path="res://Skybox.gd" id="2_ldwut"]
 [ext_resource type="Script" uid="uid://wfgwgnx582cd" path="res://Player/Player.gd" id="3_u3tsg"]
-[ext_resource type="Texture2D" uid="uid://hahyfuer1ehu" path="res://Player/MetalSonic.png" id="4_lieoa"]
+[ext_resource type="Texture2D" uid="uid://cytplv5ttkesb" path="res://Player/Hue.png" id="4_cu6jd"]
 [ext_resource type="MeshLibrary" uid="uid://b7whw1hwohht6" path="res://EncoreTileset.tres" id="5_ddvr6"]
 [ext_resource type="Script" uid="uid://cwfgselu61keu" path="res://Map.gd" id="6_mokfi"]
 [ext_resource type="PackedScene" uid="uid://b7757xtardl4g" path="res://UFO/UFOHolder.tscn" id="7_mas8x"]
@@ -93,7 +93,9 @@ fov = 80.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Player/Head/Camera3D"]
 transform = Transform3D(0.337433, 0.0433481, -0.0822171, 0, 0.309603, 0.163235, 0.0929446, -0.157374, 0.298487, 1.00408, -0.508054, -1.18129)
-texture = ExtResource("4_lieoa")
+pixel_size = 0.075
+texture_filter = 0
+texture = ExtResource("4_cu6jd")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("5_ddvr6")
