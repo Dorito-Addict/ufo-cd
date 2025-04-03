@@ -100,8 +100,11 @@ func air_move(delta):
 	
 	clip_velocity(get_wall_normal(), 14, delta)
 	clip_velocity(get_floor_normal(), 14, delta)
-
-	velocity.y -= gravity * delta
+	
+	if has_node("Head/Camera3D/Point"):
+		velocity.y -= gravity * delta * 2
+	else:
+		velocity.y -= gravity * delta
 
 func ground_move(delta):
 	floor_snap_length = 0.4
