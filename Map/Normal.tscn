@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://qyre7sdybeg1"]
+[gd_scene load_steps=28 format=3 uid="uid://qyre7sdybeg1"]
 
 [ext_resource type="Material" uid="uid://c1itbbecntpym" path="res://Map/SpecialShader.tres" id="1_fiie8"]
 [ext_resource type="Script" uid="uid://bphistmkb7dr7" path="res://Skybox.gd" id="2_n7rm4"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b15gmi6er7514" path="res://SoundFX/BoostPad.wav" id="15_1fqnv"]
 [ext_resource type="AudioStream" uid="uid://c7xgk72qntx4h" path="res://SoundFX/TimeStone.wav" id="16_78fch"]
 [ext_resource type="AudioStream" uid="uid://crmfa5uvnq4fa" path="res://SoundFX/UFORespawn.wav" id="17_ayjgy"]
+[ext_resource type="Script" uid="uid://drng2hnkxjy5v" path="res://Map/UFOCounter.gd" id="18_n7rm4"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3hf6u"]
 material = ExtResource("1_fiie8")
@@ -40,7 +41,7 @@ size = Vector3(3, 2, 3)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0cd2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fiie8"]
 render_priority = 0
 shader = ExtResource("8_c5au4")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -60,7 +61,7 @@ shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mctxq"]
-material = SubResource("ShaderMaterial_x0cd2")
+material = SubResource("ShaderMaterial_fiie8")
 size = Vector2(1024, 1024)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3hf6u"]
@@ -159,3 +160,12 @@ volume_db = -3.0
 [node name="UFORespawn" type="AudioStreamPlayer" parent="SoundFX"]
 stream = ExtResource("17_ayjgy")
 volume_db = -3.0
+
+[node name="UFOCount" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 991.0
+offset_right = 444.0
+offset_bottom = 1074.0
+theme_override_font_sizes/font_size = 60
+text = "TEST TEST TEST"
+script = ExtResource("18_n7rm4")

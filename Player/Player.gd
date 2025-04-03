@@ -88,7 +88,7 @@ func apply_acceleration(acceleration: float, top_speed: float, delta):
 	velocity.z += accel_final * wish_dir.z
 
 func air_move(delta):
-	if Input.is_action_just_pressed("jump") and hasDash == true and has_node("Head/Camera3D/Point"):
+	if Input.is_action_just_pressed("dash") and hasDash == true and has_node("Head/Camera3D/Point"):
 		$"../SoundFX/HyperRing".play()
 		# $"../SoundFX/Charge".play()
 		$"../SoundFX/BoostPad".play()

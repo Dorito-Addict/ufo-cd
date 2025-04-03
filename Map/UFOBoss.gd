@@ -2,31 +2,47 @@ extends CharacterBody3D
 
 @onready var mapSize : float = 50 # This should be 1/2th of the width of the map
 @onready var randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
+@onready var bossSprite = $Sprite3D
 
 @export var speed : float = 12.5
 @export var texture : Texture2D 
-var attackCounter = 0
-
-func _process(delta):
-	#if (abs(randomPos.x - global_position.x) <= 5 and abs(randomPos.z - global_position.z) <= 5):
-		#randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
-		#attackCounter = 3
-	#else:
-		#var direction = randomPos - global_position
-		#direction = direction.normalized()
-		#velocity = global_position.direction_to(randomPos) * delta * speed
-		#
-		#move_and_collide(velocity)
-	
-	
-	var player = get_node("/root/Node3D/Player")
-	velocity = global_position.direction_to(player.position) * delta * speed * 2
-	move_and_collide(velocity)
-		
+var attackCounter : int = 0
 
 func _ready():
-	$Sprite3D.texture = texture
+	bossSprite.texture = load("res://UFO/UFOBoss.png")
 	$Area3D.body_entered.connect(on_body_entered)
+	
+func _process(delta):
+	velocity = Vector3(0,0,0)
+	
+	if attackCounter == 0: # Roaming Attack
+		bossSprite.texture = load("res://UFO/UFOBoss.png")
+		bossSprite.position = Vector3(0.0, 10.0, 0.0)
+		$Area3D.position = Vector3(0.0, 13.25, 0.0)
+		
+		if (abs(randomPos.x - global_position.x) <= 5 and abs(randomPos.z - global_position.z) <= 5):
+			randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
+			attackCounter = 1
+		else:
+			var direction = randomPos - global_position
+			direction = direction.normalized()
+			velocity = global_position.direction_to(randomPos) * delta * speed * 2
+			
+			move_and_collide(velocity)
+			
+	if attackCounter == 1: # Chasing Attack
+		bossSprite.position = Vector3(0.0, 4.0, 0.0)
+		$Area3D.position = Vector3(0.0, 3.25, 0.0)
+		bossSprite.texture = load("res://UFO/UFOBossGrab.png")
+		var player = get_node("/root/Node3D/Player")
+		
+		randomPos = player.position
+		if (abs(randomPos.x - global_position.x) <= 0.5 and abs(randomPos.z - global_position.z) <= 0.5):
+			attackCounter = 0
+			randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
+		else:
+			velocity = global_position.direction_to(randomPos) * delta * speed * 5
+			move_and_collide(velocity)
 
 func on_body_entered(body: Node3D) -> void:
 	if body is PlayerEntity:
@@ -34,4 +50,30 @@ func on_body_entered(body: Node3D) -> void:
 		sound_destroy.play()
 		
 		body.velocity *= -1 * 0.5
-		body.hasDash = true
+
+
+#func attack_chase(delta):
+	#var player = get_node("/root/Node3D/Player")
+	#bossSprite.position = Vector3(0.0, 4.0, 0.0)
+	#$Area3D.position = Vector3(0.0, 3.25, 0.0)
+	#bossSprite.texture = load("res://UFO/UFOBossGrab.png")
+	#randomPos = player.position
+	#if (abs(randomPos.x - global_position.x) <= 0.5 and abs(randomPos.z - global_position.z) <= 0.5):
+		#randomPos = player.position
+	#else:
+		#velocity = global_position.direction_to(randomPos) * delta * speed * 3
+		#move_and_collide(velocity)
+#
+#func attack_roam(delta):
+	#bossSprite.texture = load("res://UFO/UFOBoss.png")
+	#bossSprite.position = Vector3(0.0, 10.0, 0.0)
+	#$Area3D.position = Vector3(0.0, 13.25, 0.0)
+	#randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
+	#if (abs(randomPos.x - global_position.x) <= 5 and abs(randomPos.z - global_position.z) <= 5):
+		#randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
+	#else:
+		#var direction = randomPos - global_position
+		#direction = direction.normalized()
+		#velocity = global_position.direction_to(randomPos) * delta * speed
+		#
+		#move_and_collide(velocity)
