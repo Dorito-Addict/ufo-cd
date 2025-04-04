@@ -46,20 +46,21 @@ func _process(delta):
 		var player = get_node("/root/Node3D/Player")
 		
 		randomPos = player.position
-		if (attackDuration == 0):
+		if (attackDuration < 1.0):
 			attackCounter = 0
 			randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
 		else:
 			velocity = global_position.direction_to(randomPos) * delta * speed * 5
 			move_and_collide(velocity)
-			attackDuration -= 1
-
+			attackDuration -= 1 + delta 
+			
 func on_body_entered(body: Node3D) -> void:
 	if body is PlayerEntity:
 		
 		if attackCounter == 1:
-			body.velocity *= Vector3.FORWARD
+			body.velocity *= -1
 			get_node("/root/Node3D/SoundFX/Bumper").play()
+			attackDuration = 0
 		else:
 			body.velocity *= -1 * 0.5
 			get_node("/root/Node3D/SoundFX/Destroy").play()

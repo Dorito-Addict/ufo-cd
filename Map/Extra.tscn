@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://krr73fxy21jk"]
+[gd_scene load_steps=39 format=3 uid="uid://krr73fxy21jk"]
 
 [ext_resource type="Material" uid="uid://jmg777e2qs1y" path="res://Map/ERZ.tres" id="1_6u63l"]
 [ext_resource type="Script" uid="uid://bphistmkb7dr7" path="res://Skybox.gd" id="2_25umq"]
@@ -21,11 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://dfnslrbvkdbk0" path="res://UFO/UFOBoss.png" id="20_104l0"]
 [ext_resource type="Script" uid="uid://bihfnlfsivrpv" path="res://Map/UFOBoss.gd" id="20_gslv3"]
 [ext_resource type="Script" uid="uid://hb76ldlg5h2m" path="res://Map/Timer.gd" id="21_gslv3"]
+[ext_resource type="Script" uid="uid://d25pn4fwlskii" path="res://Map/UFOProjectile.gd" id="22_7c5wk"]
+[ext_resource type="Texture2D" uid="uid://dwbogn8kov1tg" path="res://UFO/UFOProjectile.png" id="22_pemhq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_c8v8o"]
 material = ExtResource("1_6u63l")
-radius = 1024.0
-height = 2048.0
+radius = 2048.0
+height = 4096.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a814b"]
 
@@ -83,6 +85,46 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gslv3"]
 radius = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pemhq"]
+
+[sub_resource type="Animation" id="Animation_7c5wk"]
+resource_name = "UFOProjectile"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_bmmjc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aw08p"]
+_data = {
+&"RESET": SubResource("Animation_bmmjc"),
+&"UFOProjectile": SubResource("Animation_7c5wk")
+}
 
 [node name="Node3D" type="Node3D"]
 
@@ -301,3 +343,25 @@ text = "Counter"
 [node name="Timer" type="Timer" parent="Countdown"]
 wait_time = 90.0
 autostart = true
+
+[node name="Projectile" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -64)
+script = ExtResource("22_7c5wk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Projectile"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_pemhq")
+
+[node name="Sprite3D" type="Sprite3D" parent="Projectile"]
+pixel_size = 0.1125
+billboard = 1
+texture_filter = 0
+texture = ExtResource("22_pemhq")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Projectile/Sprite3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_aw08p")
+}
+autoplay = "UFOProjectile"
+speed_scale = 12.0

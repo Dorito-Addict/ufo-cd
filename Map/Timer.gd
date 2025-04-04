@@ -6,7 +6,7 @@ extends Node
 func _ready():
 	timer.start()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	label.text = str(int(timer.time_left))
 	
 	if timer.time_left < 1:
