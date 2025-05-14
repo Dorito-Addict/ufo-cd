@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://krr73fxy21jk"]
+[gd_scene load_steps=33 format=3 uid="uid://krr73fxy21jk"]
 
 [ext_resource type="Material" uid="uid://jmg777e2qs1y" path="res://Map/ERZ.tres" id="1_6u63l"]
 [ext_resource type="Script" uid="uid://bphistmkb7dr7" path="res://Skybox.gd" id="2_25umq"]
@@ -7,17 +7,13 @@
 [ext_resource type="MeshLibrary" uid="uid://bqs88f5rmtssy" path="res://ERZTileset.tres" id="5_6u63l"]
 [ext_resource type="Script" uid="uid://cwfgselu61keu" path="res://Map.gd" id="6_pemhq"]
 [ext_resource type="AudioStream" uid="uid://b5v6g1qrdw744" path="res://SoundFX/EggReverie.ogg" id="8_6u63l"]
-[ext_resource type="AudioStream" uid="uid://cxtpwnvjvka3b" path="res://SoundFX/Ruby/RubyAttack.wav" id="11_pemhq"]
 [ext_resource type="AudioStream" uid="uid://bejhpolnhwfe2" path="res://SoundFX/Jump.wav" id="11_qmb6t"]
-[ext_resource type="AudioStream" uid="uid://chkmyy7838sq8" path="res://SoundFX/Ruby/RubyRedirect.wav" id="12_7c5wk"]
 [ext_resource type="AudioStream" uid="uid://dkqmn7e08g2xo" path="res://SoundFX/ElecPulse.wav" id="12_25umq"]
 [ext_resource type="AudioStream" uid="uid://t3lqxg8ixwq5" path="res://SoundFX/Spring.wav" id="12_ypc2k"]
 [ext_resource type="AudioStream" uid="uid://dbxgn77vpfvau" path="res://SoundFX/HyperRing.wav" id="13_25umq"]
 [ext_resource type="AudioStream" uid="uid://mu3pcvuyc0xk" path="res://SoundFX/PeelRelease.wav" id="14_8nqp6"]
 [ext_resource type="AudioStream" uid="uid://dgx4lljei1kax" path="res://SoundFX/Destroy.wav" id="14_e0uja"]
 [ext_resource type="AudioStream" uid="uid://b15gmi6er7514" path="res://SoundFX/BoostPad.wav" id="15_53adt"]
-[ext_resource type="AudioStream" uid="uid://cbjw2nuqymqe3" path="res://SoundFX/Release.wav" id="15_aw08p"]
-[ext_resource type="AudioStream" uid="uid://cppbwh3qf18mo" path="res://SoundFX/MightyLand.wav" id="16_aw08p"]
 [ext_resource type="Texture2D" uid="uid://bxlbgedekddhf" path="res://Map/ERZ/ERZCrystal1.png" id="16_c8v8o"]
 [ext_resource type="AudioStream" uid="uid://c7xgk72qntx4h" path="res://SoundFX/TimeStone.wav" id="16_oetwe"]
 [ext_resource type="AudioStream" uid="uid://crmfa5uvnq4fa" path="res://SoundFX/UFORespawn.wav" id="17_nvalg"]
@@ -80,10 +76,8 @@ height = 4.0
 size = Vector3(3, 2, 3)
 
 [sub_resource type="Environment" id="Environment_rpqi1"]
-background_color = Color(1, 1, 1, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_104l0"]
 
@@ -220,14 +214,6 @@ volume_db = 0.5
 stream = ExtResource("12_ypc2k")
 volume_db = -3.0
 
-[node name="RubyAttack" type="AudioStreamPlayer" parent="SoundFX"]
-stream = ExtResource("11_pemhq")
-volume_db = -3.0
-
-[node name="RubyRedirect" type="AudioStreamPlayer" parent="SoundFX"]
-stream = ExtResource("12_7c5wk")
-volume_db = -3.0
-
 [node name="Bumper" type="AudioStreamPlayer" parent="SoundFX"]
 stream = ExtResource("12_25umq")
 volume_db = -3.0
@@ -235,14 +221,6 @@ volume_db = -3.0
 [node name="HyperRing" type="AudioStreamPlayer" parent="SoundFX"]
 stream = ExtResource("13_25umq")
 volume_db = -3.0
-
-[node name="Slam" type="AudioStreamPlayer" parent="SoundFX"]
-stream = ExtResource("15_aw08p")
-volume_db = 3.0
-
-[node name="Slam2" type="AudioStreamPlayer" parent="SoundFX"]
-stream = ExtResource("16_aw08p")
-volume_db = 5.0
 
 [node name="Charge" type="AudioStreamPlayer" parent="SoundFX"]
 stream = ExtResource("14_8nqp6")

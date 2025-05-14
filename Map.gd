@@ -1,4 +1,4 @@
-extends GridMap
+class_name MapEntity extends GridMap
 
 const BOUNCE_TILES: PackedInt32Array = [0, 2]
 const SPRING_TILES = 3

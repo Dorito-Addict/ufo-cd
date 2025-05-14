@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk1xwnnf8psfq"]
+
+[ext_resource type="Script" uid="uid://bd1yl3taf0x1v" path="res://Map/Flash.gd" id="1_lhdvb"]
+
+[node name="ColorRect" type="ColorRect"]
+offset_left = -3713.0
+offset_top = -2482.0
+offset_right = 5800.0
+offset_bottom = 3518.0
+script = ExtResource("1_lhdvb")

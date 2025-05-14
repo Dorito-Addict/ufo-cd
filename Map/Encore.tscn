@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bhri1telqylgk"]
+[gd_scene load_steps=31 format=3 uid="uid://bhri1telqylgk"]
 
 [ext_resource type="Material" uid="uid://cbrgkcei5hfto" path="res://Map/EncoreShader.tres" id="1_ddvr6"]
 [ext_resource type="Script" uid="uid://bphistmkb7dr7" path="res://Skybox.gd" id="2_ldwut"]
@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://c7xgk72qntx4h" path="res://SoundFX/TimeStone.wav" id="14_ldwut"]
 [ext_resource type="AudioStream" uid="uid://b15gmi6er7514" path="res://SoundFX/BoostPad.wav" id="15_l3133"]
 [ext_resource type="AudioStream" uid="uid://crmfa5uvnq4fa" path="res://SoundFX/UFORespawn.wav" id="17_u3tsg"]
+[ext_resource type="PackedScene" uid="uid://dk1xwnnf8psfq" path="res://ColorRect.tscn" id="18_e4udf"]
+[ext_resource type="Texture2D" uid="uid://cu1xc610stqus" path="res://Map/Buildings.png" id="19_tlqv2"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3hf6u"]
 material = ExtResource("1_ddvr6")
@@ -65,6 +67,23 @@ size = Vector2(1024, 1024)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3hf6u"]
 size = Vector3(1024, 0.001, 1024)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vlnm"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("19_tlqv2")
+uv1_scale = Vector3(8, 2, 1)
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_03ypu"]
+material = SubResource("StandardMaterial3D_2vlnm")
+flip_faces = true
+top_radius = 511.99
+bottom_radius = 511.99
+height = 35.0
+cap_top = false
+cap_bottom = false
 
 [node name="Node3D" type="Node3D"]
 
@@ -160,3 +179,9 @@ volume_db = -3.0
 [node name="UFORespawn" type="AudioStreamPlayer" parent="SoundFX"]
 stream = ExtResource("17_u3tsg")
 volume_db = -3.0
+
+[node name="ColorRect" parent="." instance=ExtResource("18_e4udf")]
+
+[node name="Crystals" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.5, 0)
+mesh = SubResource("CylinderMesh_03ypu")

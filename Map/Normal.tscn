@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://qyre7sdybeg1"]
+[gd_scene load_steps=35 format=3 uid="uid://qyre7sdybeg1"]
 
 [ext_resource type="Material" uid="uid://c1itbbecntpym" path="res://Map/SpecialShader.tres" id="1_fiie8"]
+[ext_resource type="PackedScene" uid="uid://dk1xwnnf8psfq" path="res://ColorRect.tscn" id="1_n3vj7"]
 [ext_resource type="Script" uid="uid://bphistmkb7dr7" path="res://Skybox.gd" id="2_n7rm4"]
 [ext_resource type="Script" uid="uid://wfgwgnx582cd" path="res://Player/Player.gd" id="3_n3vj7"]
 [ext_resource type="Texture2D" uid="uid://cytplv5ttkesb" path="res://Player/Hue.png" id="4_fiie8"]
@@ -18,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://c7xgk72qntx4h" path="res://SoundFX/TimeStone.wav" id="16_78fch"]
 [ext_resource type="AudioStream" uid="uid://crmfa5uvnq4fa" path="res://SoundFX/UFORespawn.wav" id="17_ayjgy"]
 [ext_resource type="Script" uid="uid://drng2hnkxjy5v" path="res://Map/UFOCounter.gd" id="18_n7rm4"]
+[ext_resource type="Texture2D" uid="uid://qlxjtcq37a1" path="res://Map/Crystals.png" id="20_m78uf"]
+[ext_resource type="Texture2D" uid="uid://ckcrq50sndsm0" path="res://Map/Planets.png" id="21_3fdwj"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3hf6u"]
 material = ExtResource("1_fiie8")
@@ -25,6 +28,41 @@ flip_faces = true
 top_radius = 512.0
 bottom_radius = 512.0
 height = 512.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fdwj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("20_m78uf")
+uv1_scale = Vector3(8, 2, 1)
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4fnjs"]
+material = SubResource("StandardMaterial3D_3fdwj")
+flip_faces = true
+top_radius = 511.99
+bottom_radius = 511.99
+height = 25.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fnjs"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("21_3fdwj")
+uv1_scale = Vector3(2, 2, 2)
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_faanv"]
+lightmap_size_hint = Vector2i(16086, 5498)
+material = SubResource("StandardMaterial3D_4fnjs")
+flip_faces = true
+top_radius = 511.99
+bottom_radius = 511.99
+height = 112.5
+cap_top = false
+cap_bottom = false
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a814b"]
 
@@ -69,11 +107,23 @@ size = Vector3(1024, 0.001, 1024)
 
 [node name="Node3D" type="Node3D"]
 
+[node name="ColorRect" parent="." instance=ExtResource("1_n3vj7")]
+
 [node name="Skybox" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 mesh = SubResource("CylinderMesh_3hf6u")
 skeleton = NodePath("../Player")
 script = ExtResource("2_n7rm4")
+
+[node name="Crystals" type="MeshInstance3D" parent="Skybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, 0)
+mesh = SubResource("CylinderMesh_4fnjs")
+skeleton = NodePath("../..")
+
+[node name="Planets" type="MeshInstance3D" parent="Skybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 110.5, 0)
+mesh = SubResource("CylinderMesh_faanv")
+skeleton = NodePath("../..")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

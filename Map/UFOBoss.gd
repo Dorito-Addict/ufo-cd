@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var health : int = 12
 
 var attackCounter : int = 0
-
+var bossProjectile = preload("res://UFO/BossProjectile.tscn")
 
 func _ready():
 	bossSprite.texture = load("res://UFO/UFOBoss.png")
@@ -24,6 +24,7 @@ func _process(delta):
 		queue_free()
 	
 	if attackCounter == 0: # Roaming Attack
+		var player = get_node("/root/Node3D/Player")
 		bossSprite.texture = load("res://UFO/UFOBoss.png")
 		bossSprite.position = Vector3(0.0, 10.0, 0.0)
 		$Area3D.position = Vector3(0.0, 13.25, 0.0)
@@ -35,7 +36,11 @@ func _process(delta):
 		else:
 			var direction = randomPos - global_position
 			direction = direction.normalized()
-			velocity = global_position.direction_to(randomPos) * delta * speed * 2
+			velocity = global_position.direction_to(Vector3(randomPos.x, player.global_position.y, randomPos.z)) * delta * speed * 2
+			
+			if $Timer.time_left <= (1 * delta):
+				var instance = bossProjectile.instantiate()
+				get_tree().root.get_node("Node3D").add_child(instance)
 			
 			move_and_collide(velocity)
 			

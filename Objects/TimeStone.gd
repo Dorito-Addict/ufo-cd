@@ -8,6 +8,7 @@ func onStoneEntered(body: Node3D):
 	if body is PlayerEntity:
 		var instance = UFOObject.instantiate()
 		get_tree().root.get_node("Node3D").add_child(instance)
-		var sound_respawn: AudioStreamPlayer = get_node("/root/Node3D/SoundFX/UFORespawn") as AudioStreamPlayer
-		sound_respawn.play()
+		get_node("/root/Node3D/SoundFX/UFORespawn").play()
+
+		$"../ColorRect".flash(0.1)
 		queue_free()

@@ -92,9 +92,13 @@ func air_move(delta):
 		$"../SoundFX/HyperRing".play()
 		# $"../SoundFX/Charge".play()
 		$"../SoundFX/BoostPad".play()
-		$"../ColorRect".flash()
+		$"../ColorRect".flash(0.05)
 		velocity = (camera.global_transform.origin - $Head/Camera3D/Point.global_transform.origin).normalized() * extraVelMulti * -1
 		hasDash = false
+	elif Input.is_action_just_pressed("slam") and has_node("Head/Camera3D/Point"):
+		$"../SoundFX/Slam".play()
+		$"../SoundFX/Slam2".play()
+		velocity = Vector3(0, -200, 0)
 
 	apply_acceleration(accel_air, top_speed_air, delta)
 	
@@ -152,3 +156,8 @@ func _physics_process(delta):
 			velocity = collision.get_normal() * 25.0
 			velocity.y = 3
 			$"../SoundFX/Bumper".play()
+	
+	if global_position.y < -50:
+		get_node("/root/Node3D/SoundFX/RubyRedirect").play()
+		global_position = Vector3(0, 2, 0)
+		$"../ColorRect".flash(0.15)
