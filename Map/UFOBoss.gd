@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var mapSize : float = 50 # This should be 1/2th of the width of the map
 @onready var randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
 @onready var bossSprite = $Sprite3D
+@onready var phantomRuby = preload("res://Objects/PhantomRuby.tscn")
 
 @export var speed : float = 12.5
 @export var texture : Texture2D 
@@ -21,6 +22,9 @@ func _process(delta):
 	velocity = Vector3(0,0,0)
 	
 	if health == 0:
+		var instance = phantomRuby.instantiate()
+		get_tree().root.get_node("Node3D").add_child(instance)
+		
 		queue_free()
 	
 	if attackCounter == 0: # Roaming Attack
@@ -36,7 +40,7 @@ func _process(delta):
 		else:
 			var direction = randomPos - global_position
 			direction = direction.normalized()
-			velocity = global_position.direction_to(Vector3(randomPos.x, player.global_position.y, randomPos.z)) * delta * speed * 2
+			velocity = global_position.direction_to(Vector3(randomPos.x, player.global_position.y * 1, randomPos.z)) * delta * speed * 2
 			
 			if $Timer.time_left <= (1 * delta):
 				var instance = bossProjectile.instantiate()
@@ -65,7 +69,7 @@ func on_body_entered(body: Node3D) -> void:
 		if attackCounter == 1:
 			body.velocity *= -1
 			get_node("/root/Node3D/SoundFX/Bumper").play()
-			attackDuration = 0
+			attackDuration = 1
 		else:
 			body.velocity *= -1 * 0.5
 			get_node("/root/Node3D/SoundFX/Destroy").play()

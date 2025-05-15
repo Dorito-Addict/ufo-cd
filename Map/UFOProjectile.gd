@@ -21,12 +21,15 @@ func _process(delta):
 
 func on_body_entered(body: Node3D) -> void:
 	if body is PlayerEntity:
-		body.velocity = selectedDir * 150
+		if body.grounded == true:
+			body.velocity = selectedDir * 150
+		else:
+			body.velocity = selectedDir * 75
 		
 		get_node("/root/Node3D/SoundFX/Bumper").play()
 		# body.velocity.x *= -1
 		# body.velocity.z *= -1
 		
 		queue_free()
-	elif body is MapEntity:
+	elif body is SkyboxEntity:
 		queue_free()

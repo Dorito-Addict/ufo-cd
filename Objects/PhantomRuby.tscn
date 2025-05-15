@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://vaq4ekqs7dir"]
+
+[ext_resource type="Script" uid="uid://dmt5wdriclff" path="res://Objects/TimeStone.gd" id="1_lu2ed"]
+[ext_resource type="Texture2D" uid="uid://b15ssgbgminw4" path="res://Objects/PhantomRuby.png" id="2_lu2ed"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnnub"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pnfm"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uilv5"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(28, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7u7i"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(42, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qup6w"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(56, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3duo"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(70, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p0v2"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(84, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f23g"]
+atlas = ExtResource("2_lu2ed")
+region = Rect2(98, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8jpw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnnub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pnfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uilv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7u7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qup6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3duo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f23g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_amtbh"]
+
+[node name="PhantomRuby" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.5)
+script = ExtResource("1_lu2ed")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_y8jpw")
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0920715, -0.0927315, -0.0888557)
+shape = SubResource("SphereShape3D_amtbh")

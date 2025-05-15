@@ -8,6 +8,5 @@ func timeStoneCheck():
 		var instance = timeStone.instantiate()
 		get_tree().root.get_node("Node3D").add_child(instance)
 		
-		var sound_timestone: AudioStreamPlayer = get_node("/root/Node3D/SoundFX/TimeStone") as AudioStreamPlayer
-		sound_timestone.play()
+		get_node("/root/Node3D/SoundFX/TimeStone").play()
 		queue_free()

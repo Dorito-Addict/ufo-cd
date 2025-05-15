@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://qyre7sdybeg1"]
+[gd_scene load_steps=37 format=3 uid="uid://qyre7sdybeg1"]
 
 [ext_resource type="Material" uid="uid://c1itbbecntpym" path="res://Map/SpecialShader.tres" id="1_fiie8"]
 [ext_resource type="PackedScene" uid="uid://dk1xwnnf8psfq" path="res://ColorRect.tscn" id="1_n3vj7"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" uid="uid://drng2hnkxjy5v" path="res://Map/UFOCounter.gd" id="18_n7rm4"]
 [ext_resource type="Texture2D" uid="uid://qlxjtcq37a1" path="res://Map/Crystals.png" id="20_m78uf"]
 [ext_resource type="Texture2D" uid="uid://ckcrq50sndsm0" path="res://Map/Planets.png" id="21_3fdwj"]
+[ext_resource type="FontFile" uid="uid://bpxr3omotbo20" path="res://Number.png" id="21_faanv"]
+[ext_resource type="Texture2D" uid="uid://b1gntojvkh1ql" path="res://Icons/UFOCount.png" id="23_c5au4"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3hf6u"]
 material = ExtResource("1_fiie8")
@@ -50,6 +52,7 @@ cap_bottom = false
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
+shading_mode = 0
 albedo_texture = ExtResource("21_3fdwj")
 uv1_scale = Vector3(2, 2, 2)
 texture_filter = 0
@@ -108,6 +111,7 @@ size = Vector3(1024, 0.001, 1024)
 [node name="Node3D" type="Node3D"]
 
 [node name="ColorRect" parent="." instance=ExtResource("1_n3vj7")]
+visible = false
 
 [node name="Skybox" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
@@ -129,6 +133,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_mask = 3
 script = ExtResource("3_n3vj7")
+jump_force = 7.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_a814b")
@@ -212,10 +217,16 @@ stream = ExtResource("17_ayjgy")
 volume_db = -3.0
 
 [node name="UFOCount" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 991.0
-offset_right = 444.0
-offset_bottom = 1074.0
-theme_override_font_sizes/font_size = 60
-text = "Counter"
+offset_left = 973.875
+offset_top = 24.0
+offset_right = 1094.88
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("21_faanv")
+theme_override_font_sizes/font_size = 80
+text = "6"
 script = ExtResource("18_n7rm4")
+
+[node name="UfoCount" type="Sprite2D" parent="UFOCount"]
+position = Vector2(-63.9999, 48)
+scale = Vector2(3.82292, 3.71875)
+texture = ExtResource("23_c5au4")

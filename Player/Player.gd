@@ -15,6 +15,10 @@ class_name PlayerEntity extends CharacterBody3D
 @export var jump_force: float = 7
 @export var projected_speed: float = 0
 @export var extraVelMulti : float = 100
+
+@export var flight : bool = false
+var flying : bool = false
+
 var grounded_prev: bool = true
 var grounded: bool = true
 var hasDash: bool = true
@@ -46,7 +50,10 @@ func clip_velocity(normal: Vector3, overbounce: float, _delta) -> void:
 	velocity -= correction_dir
 	# this is only here cause I have the gravity too high by default
 	# with a gravity so high, I use this to account for it and allow surfing
-	velocity.y -= correction_dir.y * (gravity/20)
+	if flying == true:
+		velocity.y -= correction_dir.y * (gravity*20)
+	else:
+		velocity.y -= correction_dir.y * (gravity/20)
 
 func apply_friction(delta):
 	var speed_scalar: float = 0
@@ -98,10 +105,17 @@ func air_move(delta):
 	elif Input.is_action_just_pressed("slam") and has_node("Head/Camera3D/Point"):
 		$"../SoundFX/Slam".play()
 		$"../SoundFX/Slam2".play()
-		velocity = Vector3(0, -200, 0)
+		velocity.y = -200.0
+	
+	if Input.is_action_just_pressed("jump") and flight == true and flying == false:
+		velocity.y = 0
+		flying = true
+	
+	if Input.is_action_pressed("jump") and flying == true:
+		velocity.y += 0.3
 
 	apply_acceleration(accel_air, top_speed_air, delta)
-	
+
 	clip_velocity(get_wall_normal(), 14, delta)
 	clip_velocity(get_floor_normal(), 14, delta)
 	
@@ -109,6 +123,7 @@ func air_move(delta):
 		velocity.y -= gravity * delta * 2
 	else:
 		velocity.y -= gravity * delta
+		
 
 func ground_move(delta):
 	floor_snap_length = 0.4
@@ -119,6 +134,7 @@ func ground_move(delta):
 		if grounded:
 			$"../SoundFX/Jump".play()
 			hasDash = true
+			flying = false
 	
 	if grounded == grounded_prev:
 		apply_friction(delta)
@@ -126,7 +142,7 @@ func ground_move(delta):
 	if is_on_wall:
 		clip_velocity(get_wall_normal(), 1, delta)
 
-func _physics_process(delta):
+func _process(delta):
 	if time_since_boost > 0: time_since_boost -= 1
 	
 	grounded_prev = grounded
@@ -147,6 +163,9 @@ func _physics_process(delta):
 		else:
 			grounded = true
 			ground_move(delta)
+	
+	if flying == true:
+		hasDash = true
 	
 	move_and_slide()
 	for i: int in range(get_slide_collision_count()):

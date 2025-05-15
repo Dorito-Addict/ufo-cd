@@ -12,3 +12,5 @@ func _process(_delta: float) -> void:
 	if timer.time_left < 1:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().change_scene_to_file("res://Menu.tscn")
+	if not get_node("/root/Node3D/UFOBoss"):
+		queue_free()

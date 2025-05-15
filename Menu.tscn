@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dasetg4ekwflh"]
+[gd_scene load_steps=10 format=3 uid="uid://dasetg4ekwflh"]
 
 [ext_resource type="Script" uid="uid://efljt3v8iay4" path="res://Menu.gd" id="1_uubjt"]
 [ext_resource type="Texture2D" uid="uid://i5t6b357pym" path="res://Icons/Logo.png" id="2_dolsu"]
 [ext_resource type="Texture2D" uid="uid://mi22tn4bt7e" path="res://Icons/Normal.png" id="2_ylpcl"]
 [ext_resource type="Texture2D" uid="uid://5h573dn6uynq" path="res://Icons/Encore.png" id="3_cx167"]
+[ext_resource type="Script" uid="uid://tuuoqwa1uepu" path="res://CameraHead.gd" id="3_dlksc"]
 [ext_resource type="Texture2D" uid="uid://2bdwj2bdiq1i" path="res://Icons/Emeralds.png" id="4_cx167"]
+[ext_resource type="PackedScene" uid="uid://bhri1telqylgk" path="res://Map/Encore.tscn" id="4_hcwhg"]
+[ext_resource type="PackedScene" uid="uid://krr73fxy21jk" path="res://Map/Extra.tscn" id="5_5p1lm"]
+[ext_resource type="PackedScene" uid="uid://qyre7sdybeg1" path="res://Map/Normal.tscn" id="6_n4eug"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,6 +18,128 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uubjt")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Normal" type="Node3D" parent="SubViewportContainer/SubViewport"]
+visible = false
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/Normal" instance=ExtResource("6_n4eug")]
+
+[node name="Player" parent="SubViewportContainer/SubViewport/Normal/Node3D" index="2"]
+visible = false
+script = null
+
+[node name="GridMap" parent="SubViewportContainer/SubViewport/Normal/Node3D" index="3"]
+script = null
+
+[node name="UFOs" parent="SubViewportContainer/SubViewport/Normal/Node3D" index="5"]
+visible = false
+script = null
+
+[node name="Music" parent="SubViewportContainer/SubViewport/Normal/Node3D/SoundFX" index="0"]
+volume_db = -80.0
+
+[node name="UFOCount" parent="SubViewportContainer/SubViewport/Normal/Node3D" index="8"]
+visible = false
+script = null
+
+[node name="CameraHead" type="Node3D" parent="SubViewportContainer/SubViewport/Normal"]
+script = ExtResource("3_dlksc")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Normal/CameraHead"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -40, 15, 40)
+current = true
+
+[node name="Encore" type="Node3D" parent="SubViewportContainer/SubViewport"]
+visible = false
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/Encore" instance=ExtResource("4_hcwhg")]
+
+[node name="Skybox" parent="SubViewportContainer/SubViewport/Encore/Node3D" index="0"]
+script = null
+
+[node name="Player" parent="SubViewportContainer/SubViewport/Encore/Node3D" index="1"]
+visible = false
+script = null
+
+[node name="GridMap" parent="SubViewportContainer/SubViewport/Encore/Node3D" index="2"]
+script = null
+
+[node name="UFOs" parent="SubViewportContainer/SubViewport/Encore/Node3D" index="4"]
+visible = false
+script = null
+
+[node name="Music" parent="SubViewportContainer/SubViewport/Encore/Node3D/SoundFX" index="0"]
+volume_db = -80.0
+
+[node name="ColorRect" parent="SubViewportContainer/SubViewport/Encore/Node3D" index="7"]
+visible = false
+script = null
+
+[node name="UFOCount" parent="SubViewportContainer/SubViewport/Encore/Node3D" index="9"]
+visible = false
+script = null
+
+[node name="CameraHead" type="Node3D" parent="SubViewportContainer/SubViewport/Encore"]
+script = ExtResource("3_dlksc")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Encore/CameraHead"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -40, 15, 40)
+current = true
+
+[node name="Extra" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/Extra" instance=ExtResource("5_5p1lm")]
+
+[node name="Skybox" parent="SubViewportContainer/SubViewport/Extra/Node3D" index="0"]
+script = null
+
+[node name="Player" parent="SubViewportContainer/SubViewport/Extra/Node3D" index="1"]
+visible = false
+script = null
+
+[node name="GridMap" parent="SubViewportContainer/SubViewport/Extra/Node3D" index="2"]
+script = null
+
+[node name="Music" parent="SubViewportContainer/SubViewport/Extra/Node3D/SoundFX" index="0"]
+volume_db = -80.0
+
+[node name="ColorRect" parent="SubViewportContainer/SubViewport/Extra/Node3D" index="6"]
+script = null
+
+[node name="UFOBoss" parent="SubViewportContainer/SubViewport/Extra/Node3D" index="7"]
+visible = false
+script = null
+
+[node name="Countdown" parent="SubViewportContainer/SubViewport/Extra/Node3D" index="8"]
+script = null
+
+[node name="Label" parent="SubViewportContainer/SubViewport/Extra/Node3D/Countdown" index="0"]
+visible = false
+
+[node name="Sprite2D" parent="SubViewportContainer/SubViewport/Extra/Node3D/Countdown" index="2"]
+visible = false
+
+[node name="CameraHead" type="Node3D" parent="SubViewportContainer/SubViewport/Extra"]
+script = ExtResource("3_dlksc")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Extra/CameraHead"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -40, 15, 40)
+current = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -68,3 +194,7 @@ expand_icon = true
 [connection signal="pressed" from="VBoxContainer/Normal" to="." method="_on_normal_pressed"]
 [connection signal="pressed" from="VBoxContainer/Encore" to="." method="_on_encore_pressed"]
 [connection signal="pressed" from="VBoxContainer/ERZ" to="." method="_on_erz_pressed"]
+
+[editable path="SubViewportContainer/SubViewport/Normal/Node3D"]
+[editable path="SubViewportContainer/SubViewport/Encore/Node3D"]
+[editable path="SubViewportContainer/SubViewport/Extra/Node3D"]
