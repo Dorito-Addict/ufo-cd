@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://vaq4ekqs7dir"]
+[gd_scene load_steps=14 format=3 uid="uid://vaq4ekqs7dir"]
 
-[ext_resource type="Script" uid="uid://dmt5wdriclff" path="res://Objects/TimeStone.gd" id="1_lu2ed"]
+[ext_resource type="Script" uid="uid://cqmx756qc1g48" path="res://Objects/PhantomRuby.gd" id="1_jnnub"]
 [ext_resource type="Texture2D" uid="uid://b15ssgbgminw4" path="res://Objects/PhantomRuby.png" id="2_lu2ed"]
+[ext_resource type="AudioStream" uid="uid://ws472sn0qwus" path="res://SoundFX/Ruby/RubyPresence.ogg" id="3_jnnub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnnub"]
 atlas = ExtResource("2_lu2ed")
@@ -70,8 +71,8 @@ animations = [{
 [sub_resource type="SphereShape3D" id="SphereShape3D_amtbh"]
 
 [node name="PhantomRuby" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.5)
-script = ExtResource("1_lu2ed")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.5, 2, -1.5)
+script = ExtResource("1_jnnub")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -83,3 +84,7 @@ autoplay = "default"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0920715, -0.0927315, -0.0888557)
 shape = SubResource("SphereShape3D_amtbh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jnnub")
+autoplay = true

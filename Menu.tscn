@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dasetg4ekwflh"]
+[gd_scene load_steps=14 format=3 uid="uid://dasetg4ekwflh"]
 
 [ext_resource type="Script" uid="uid://efljt3v8iay4" path="res://Menu.gd" id="1_uubjt"]
 [ext_resource type="Texture2D" uid="uid://i5t6b357pym" path="res://Icons/Logo.png" id="2_dolsu"]
+[ext_resource type="Shader" uid="uid://dhu0r7p2haia0" path="res://Menu2.gdshader" id="2_v0s1l"]
 [ext_resource type="Texture2D" uid="uid://mi22tn4bt7e" path="res://Icons/Normal.png" id="2_ylpcl"]
 [ext_resource type="Texture2D" uid="uid://5h573dn6uynq" path="res://Icons/Encore.png" id="3_cx167"]
 [ext_resource type="Script" uid="uid://tuuoqwa1uepu" path="res://CameraHead.gd" id="3_dlksc"]
@@ -9,6 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://bhri1telqylgk" path="res://Map/Encore.tscn" id="4_hcwhg"]
 [ext_resource type="PackedScene" uid="uid://krr73fxy21jk" path="res://Map/Extra.tscn" id="5_5p1lm"]
 [ext_resource type="PackedScene" uid="uid://qyre7sdybeg1" path="res://Map/Normal.tscn" id="6_n4eug"]
+[ext_resource type="FontFile" uid="uid://dqm2wqbfk1qi2" path="res://genesis.ttf" id="8_5qkn8"]
+[ext_resource type="AudioStream" uid="uid://c0ha5fkogv7aq" path="res://SoundFX/Menu.ogg" id="10_1igrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qkn8"]
+shader = ExtResource("2_v0s1l")
+shader_parameter/size = 70.607
+shader_parameter/color1 = Color(0.305774, 0.0148254, 0.38227, 1)
+shader_parameter/color2 = Color(0.513726, 0.380392, 0, 1)
+shader_parameter/speed = 1.0
+shader_parameter/direction_x = 1.0
+shader_parameter/direction_y = 1.0
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -18,6 +30,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uubjt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5qkn8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -30,6 +51,7 @@ stretch = true
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
@@ -102,6 +124,7 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 current = true
 
 [node name="Extra" type="Node3D" parent="SubViewportContainer/SubViewport"]
+visible = false
 
 [node name="Node3D" parent="SubViewportContainer/SubViewport/Extra" instance=ExtResource("5_5p1lm")]
 
@@ -165,8 +188,9 @@ texture = ExtResource("2_dolsu")
 [node name="Normal" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Normal"
+theme_override_fonts/font = ExtResource("8_5qkn8")
+theme_override_font_sizes/font_size = 65
+text = "NORMAL"
 icon = ExtResource("2_ylpcl")
 icon_alignment = 1
 expand_icon = true
@@ -174,8 +198,9 @@ expand_icon = true
 [node name="Encore" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Encore"
+theme_override_fonts/font = ExtResource("8_5qkn8")
+theme_override_font_sizes/font_size = 65
+text = "ENCORE"
 icon = ExtResource("3_cx167")
 icon_alignment = 1
 expand_icon = true
@@ -183,13 +208,19 @@ expand_icon = true
 [node name="ERZ" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Reverie"
+theme_override_fonts/font = ExtResource("8_5qkn8")
+theme_override_font_sizes/font_size = 65
+text = "REVERIE"
 icon = ExtResource("4_cx167")
 icon_alignment = 1
 expand_icon = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_1igrg")
+volume_db = -3.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Normal" to="." method="_on_normal_pressed"]
 [connection signal="pressed" from="VBoxContainer/Encore" to="." method="_on_encore_pressed"]

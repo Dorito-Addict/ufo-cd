@@ -14,9 +14,11 @@ class_name PlayerEntity extends CharacterBody3D
 @export var lin_friction_speed: float = 10
 @export var jump_force: float = 7
 @export var projected_speed: float = 0
-@export var extraVelMulti : float = 100
+@export var dashVelMulti : float = 100
+@export var peelOutMulti : float = 50
 
 @export var flight : bool = false
+@export var reverie : bool = false
 var flying : bool = false
 
 var grounded_prev: bool = true
@@ -95,14 +97,14 @@ func apply_acceleration(acceleration: float, top_speed: float, delta):
 	velocity.z += accel_final * wish_dir.z
 
 func air_move(delta):
-	if Input.is_action_just_pressed("dash") and hasDash == true and has_node("Head/Camera3D/Point"):
+	if Input.is_action_just_pressed("dash") and hasDash == true and reverie == true:
 		$"../SoundFX/HyperRing".play()
 		# $"../SoundFX/Charge".play()
 		$"../SoundFX/BoostPad".play()
 		$"../ColorRect".flash(0.05)
-		velocity = (camera.global_transform.origin - $Head/Camera3D/Point.global_transform.origin).normalized() * extraVelMulti * -1
+		velocity = (camera.global_transform.origin - $Head/Camera3D/Point.global_transform.origin).normalized() * dashVelMulti * -1
 		hasDash = false
-	elif Input.is_action_just_pressed("slam") and has_node("Head/Camera3D/Point"):
+	elif Input.is_action_just_pressed("slam") and reverie == true:
 		$"../SoundFX/Slam".play()
 		$"../SoundFX/Slam2".play()
 		velocity.y = -200.0
@@ -112,7 +114,7 @@ func air_move(delta):
 		flying = true
 	
 	if Input.is_action_pressed("jump") and flying == true:
-		velocity.y += 0.3
+		velocity.y += 35 * delta 
 
 	apply_acceleration(accel_air, top_speed_air, delta)
 
@@ -135,13 +137,21 @@ func ground_move(delta):
 			$"../SoundFX/Jump".play()
 			hasDash = true
 			flying = false
+			#friction = 0
 	
 	if grounded == grounded_prev:
 		apply_friction(delta)
 	
 	if is_on_wall:
 		clip_velocity(get_wall_normal(), 1, delta)
-
+	
+	# Unused code for an unfinished Super Peel-out like ability.
+	#if Input.is_action_just_pressed("dash") and abs(velocity) < Vector3(0.1, 0.1, 0.1) and reverie == false:
+		#velocity = (camera.global_transform.origin - $Point.global_transform.origin).normalized() * peelOutMulti * -1
+		#friction = 0
+		
+		
+	
 func _process(delta):
 	if time_since_boost > 0: time_since_boost -= 1
 	
@@ -150,7 +160,6 @@ func _process(delta):
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "back")
 	wish_dir = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	projected_speed = (velocity * Vector3(1, 0, 1)).dot(wish_dir)
-	
 	
 	# Add the gravity.
 	if not is_on_floor():

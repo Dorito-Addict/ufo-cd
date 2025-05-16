@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/EggReverie.ogg-9fd49f954fc44f65e39743b233efc7
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=4.0
+bpm=0.0
 beat_count=0
 bar_beats=4

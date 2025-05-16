@@ -24,6 +24,7 @@ func _process(delta):
 	if health == 0:
 		var instance = phantomRuby.instantiate()
 		get_tree().root.get_node("Node3D").add_child(instance)
+		$"../SoundFX/Music".volume_db = -80
 		
 		queue_free()
 	
@@ -98,7 +99,8 @@ func on_body_entered(body: Node3D) -> void:
 		#randomPos = Vector3(randf_range(-mapSize, mapSize), position.y, randf_range(-mapSize, mapSize))
 	#else:
 		#var direction = randomPos - global_position
-		#direction = direction.normalized()
-		#velocity = global_position.direction_to(randomPos) * delta * speed
+			#velocity = global_position.direction_to(randomPos) * delta * speed
 		#
 		#move_and_collide(velocity)
+#direction = direction.normalized()
+	

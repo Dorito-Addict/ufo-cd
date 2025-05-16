@@ -185,6 +185,7 @@ stream = ExtResource("17_u3tsg")
 volume_db = -3.0
 
 [node name="ColorRect" parent="." instance=ExtResource("18_e4udf")]
+visible = false
 
 [node name="Crystals" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.5, 0)
@@ -201,6 +202,6 @@ text = "6"
 script = ExtResource("21_vvugq")
 
 [node name="UfoCount" type="Sprite2D" parent="UFOCount"]
-position = Vector2(-63.9999, 48)
-scale = Vector2(3.82292, 3.71875)
+position = Vector2(-62.2268, 47)
+scale = Vector2(4.22069, 4.125)
 texture = ExtResource("22_ddjq1")

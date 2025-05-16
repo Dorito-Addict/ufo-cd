@@ -17,7 +17,9 @@ func _ready():
 
 func _display_level(id: StringName):
 	for child: Node3D in level_sub_viewport.get_children() as Array[Node3D]:
-		child.visible = (child.name == id)
+		if child is Node3D:
+			child.visible = (child.name == id)
+		
 
 func _on_normal_pressed() -> void:
 	get_tree().change_scene_to_file("res://Map/Normal.tscn")

@@ -109,7 +109,7 @@ accel = 24.0
 top_speed_ground = 24.0
 top_speed_air = 8.0
 jump_force = 24.0
-extraVelMulti = 140.0
+reverie = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_a814b")

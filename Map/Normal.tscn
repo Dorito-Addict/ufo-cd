@@ -153,6 +153,9 @@ pixel_size = 0.075
 texture_filter = 0
 texture = ExtResource("4_fiie8")
 
+[node name="Point" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -3)
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("5_3fdwj")
 cell_size = Vector3(3, 3, 3)
@@ -227,6 +230,6 @@ text = "6"
 script = ExtResource("18_n7rm4")
 
 [node name="UfoCount" type="Sprite2D" parent="UFOCount"]
-position = Vector2(-63.9999, 48)
-scale = Vector2(3.82292, 3.71875)
+position = Vector2(-62.2268, 47)
+scale = Vector2(4.22069, 4.125)
 texture = ExtResource("23_c5au4")
